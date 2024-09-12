@@ -1,1 +1,2 @@
-# tpe_web2
+![diagrama_2024](https://github.com/user-attachments/assets/cf36ffd4-9cb6-4a0a-9fb6-b88c9afabeb1)
+Nuestra base de datos consiste en dos tablas. Una con jugadores de futbol y la informacion de cada uno y otra de clubes de futbol tambien con su informacion. La relacion entre tablas seria relacionar a que club pertenece cada jugador, relacionando el id_club de la tabla "jugadores" con el id_club de la tabla "clubes".
