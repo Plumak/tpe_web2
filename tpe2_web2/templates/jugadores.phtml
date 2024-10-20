@@ -1,0 +1,60 @@
+<?php require ('header.phtml'); ?>
+<table>
+           <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th>Club</th>
+                <th></th>
+                </tr>
+            <?php  foreach ($jugadores as $jugador) { ?>
+                <tr> 
+                <td><?php echo $jugador->nombre ?> </td>
+                <td> <?php echo $jugador->apellido ?> </td>
+                <td> <?php echo $jugador->edad ?> </td>
+                <td> <?php echo $jugador->club ?> </td>
+                
+                <td> <a href="jugadores/<?php echo $jugador->id_jugador?>"> <button class="detalle">Ver</button></a></td>
+                  <?php if ($_SESSION["logueado"] = true) : ?>
+                    <?php //Eliminar un jugador // ?>
+                 <td><div class="actions"> <a href="eliminarjugador/<?php echo $jugador->id_jugador?>" type="button" class="btn btn-danger ml-auto">Borrar</a></div></td>
+                  <?php  endif ?> </td>
+                  <?php  } ?>
+                </tr>
+                </table>
+
+
+                <?php // FORM AGREGAR UN JUGADOR // ?>
+                <?php if ($_SESSION["logueado"] = true) : ?>
+                   <form action="agregarjugador" method="POST">
+                    <input type="text" name="nombre" placeholder="Nombre">
+                    <input type="text" name="apellido" placeholder="Apellido">
+                    <input type="text" name="edad" placeholder="Edad">
+                    <select name="id_club">
+                       <?php foreach($clubes as $club){  ?><option value="<?php echo $club->id_club?>"> <?php echo $club->club?> </option>
+                       <?php } ?>
+                    </select>
+                    <a href="agregarjugador"><button type="submit" class="btn btn-success">Agregar</button></a>
+                   </form>
+                   <?php  endif ?>
+
+                   <?php // FORM EDITAR UN JUGADOR // ?>
+                   <?php if ($_SESSION["logueado"] = true) : ?>
+
+                   <form action="editarjugador" method="POST">
+                   <select name="id_jugador" id="">
+                       <?php foreach($jugadores as $jugador){ ?><option value= "<?php echo $jugador->id_jugador ?>"> <?php echo $jugador->apellido?> </option>
+                       <?php } ?>
+                    </select>
+                    <input type="text" name="nombre" placeholder="Nombre">
+                    <input type="text" name="apellido" placeholder="Apellido">
+                    <input type="text" name="edad" placeholder="Edad">
+                    <select name="id_club" id="">
+                       <?php foreach($clubes as $club){  ?><option value= "<?php echo $club->id_club ?>"> <?php echo $club->club?> </option>
+                       <?php } ?>
+                    </select>
+                    <a href="editarjugador"><button type="submit" class="btn btn-primary">Editar</button></a>
+                   </form>
+                   <?php  endif ?>
+        <link rel="stylesheet" href="style.css">
+            

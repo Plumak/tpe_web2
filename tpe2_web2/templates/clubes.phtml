@@ -1,0 +1,38 @@
+<?php require ('header.phtml'); ?>
+<table>
+           <tr>
+                <th>Club</th>
+                <th>Año fundacion</th>
+                </tr>
+            <?php  foreach ($clubes as $club) { ?>
+                <tr> 
+                <td><?php echo $club->club ?> </td>
+                <td> <?php echo $club->anio_fundacion ?> </td>
+                <td> <a href="clubes/<?php echo $club->id_club?>"> <button class="detalle">Ver</button></a></td>
+                <?php if ($_SESSION["logueado"] = true) : ?>
+                <?php //Eliminar un club // ?>
+                 <td><div class="actions"> <a href="eliminarclub/<?php echo $club->id_club?>" type="button" class="btn btn-danger ml-auto">Borrar</a></div></td>    
+                 <?php  endif ?>
+                 <?php  } ?>
+                </tr>
+                </table>
+                <?php if ($_SESSION["logueado"] = true) : ?>
+                    <?php // Agregar un club // ?>
+                    <form action="agregarclub" method="POST">
+                    <input type="text" name="nombre_club" placeholder="Nombre club">
+                    <input type="text" name="anio_fundacion" placeholder="Año">
+                    <a href="agregarclub"><button type="submit" class="btn btn-success">Agregar</button></a>
+                    </form>
+                    <?php  endif ?>
+
+                <?php // EDITAR un club // ?>
+                    <form action="editarclub" method="POST">
+                    <input type="text" name="nombre_club" placeholder="Nombre club">
+                    <input type="text" name="anio_fundacion" placeholder="Año">
+                        <select name="id_club">
+                        <?php  foreach ($clubes as $club) { ?>
+                            <option value="<?php echo $club->id_club ?>"> <?php echo $club->club ?> </option>
+                            <?php  } ?>
+                        </select>
+                        <a href="editarclub"><button type="submit" class="btn btn-primary">Editar</button></a>      
+                <link rel="stylesheet" href="style.css">

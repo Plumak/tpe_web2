@@ -1,0 +1,19 @@
+<?php require ('header.phtml'); ?>
+<table>
+           <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th>Club</th>
+                </tr>
+            <?php  foreach ($clubes as $club) { ?>
+                <tr> 
+                <td><?php echo $club->nombre ?> </td>
+                <td> <?php echo $club->apellido ?> </td>
+                <td> <?php echo $club->edad ?> </td>
+                <td> <?php echo $club->club ?> </td>
+                </tr>
+                <?php  } ?> 
+                <link rel="stylesheet" href="style.css">
+            
+        </table>
